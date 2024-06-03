@@ -1,0 +1,20 @@
+EJERCICIO 3 
+Escribe  un  programa  que  lea  cadenas  de  caracteres  de  entrada  y  las  imprima  ordenadas  según  su  longitud, 
+comenzando  por  la  más  corta.  Si  hay  varias  cadenas  con  la  misma  longitud,  éstas  deben  imprimirse  en  orden 
+lexicográfico. 
+
+import java.util.*;
+
+public class SortStrings {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<String> strings = new ArrayList<>();
+        while (scanner.hasNextLine()) {
+            strings.add(scanner.nextLine());
+        }
+        scanner.close();
+
+        strings.sort(Comparator.comparingInt(String::length).thenComparing(Comparator.naturalOrder()));
+        strings.forEach(System.out::println);
+    }
+}

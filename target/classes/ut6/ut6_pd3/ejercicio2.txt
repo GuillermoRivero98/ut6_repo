@@ -1,0 +1,14 @@
+EJERCICIO 2 
+Escribe un método que tome como parámetro un Map<String.String> y devuelva un nuevo Map<String.String> en el 
+que las claves y los valores estén intercambiados. Genera una excepción si hay valores duplicados en el mapa que se 
+pasa como parámetro.
+
+public static Map<String, String> swapKeysAndValues(Map<String, String> map) throws IllegalArgumentException {
+    Map<String, String> swappedMap = new HashMap<>();
+    for (Map.Entry<String, String> entry : map.entrySet()) {
+        if (swappedMap.put(entry.getValue(), entry.getKey()) != null) {
+            throw new IllegalArgumentException("Duplicate value found: " + entry.getValue());
+        }
+    }
+    return swappedMap;
+}

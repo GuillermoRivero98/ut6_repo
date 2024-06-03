@@ -1,0 +1,8 @@
+EJERCICIO 1 
+Escribe,  en  el  menor  número  de  líneas  de  código  posible,  una  funcionalidad  que  elimine  todas  las  entradas  de  un 
+Map cuyo valor sea null.
+
+
+public static <K, V> void removeNullValues(Map<K, V> map) {
+    map.values().removeIf(Objects::isNull);
+}

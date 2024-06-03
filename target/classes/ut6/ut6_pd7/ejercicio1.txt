@@ -1,0 +1,56 @@
+EJERCICIO 1 
+Investiga cómo está implementado el método hashCode en Java para objetos de la clase Object. 
+Luego investiga cómo se implementa el mismo para las clases Integer y String. Explica por qué la 
+implementación es diferente. 
+
+
+Clase Object:
+
+El método hashCode en la clase Object está implementado para devolver una representación numérica del objeto.
+La implementación por defecto en la clase Object devuelve una dirección de memoria única para el objeto, 
+que puede considerarse como un número entero.
+
+Código de hashCode en Object
+
+public native int hashCode();
+
+
+Clase Integer:
+
+En la clase Integer, el método hashCode devuelve el valor del entero en sí mismo.
+Esto es porque cada entero ya es único y su valor puede usarse directamente como código hash.
+
+Código de hashCode en Integer:
+
+public int hashCode() {
+    return intValue;
+}
+
+
+Clase String:
+
+La clase String tiene una implementación más compleja de hashCode, calculada a partir de los caracteres de la cadena.
+El método suma los valores de los caracteres de la cadena, multiplicados por 31 (un número primo) en una secuencia.
+Esto asegura una buena distribución de los códigos hash para diferentes cadenas.
+
+Código de hashCode en String
+
+public int hashCode() {
+    int h = 0;
+    int length = value.length;
+    if (h == 0 && length > 0) {
+        char val[] = value;
+        for (int i = 0; i < length; i++) {
+            h = 31 * h + val[i];
+        }
+        hash = h;
+    }
+    return h;
+}
+
+
+Razón de Diferencias:
+Object: Proporciona una implementación base basada en la identidad del objeto.
+Integer: Usa el valor del entero directamente, porque es único y apropiado.
+String: Necesita una fórmula que mezcle bien los caracteres de la cadena 
+para evitar colisiones en la tabla hash.

@@ -1,0 +1,7 @@
+Seleccionar la o las clases de la API de colecciones de JAVA  más apropiada para esta aplicación. Justificar la 
+elección 
+
+HashMap: Esta clase proporciona una estructura de datos basada en tablas hash que permite la inserción,
+búsqueda y eliminación en tiempo constante (O(1)) en promedio. Dado que necesitamos contar las 
+ocurrencias de cada palabra, HashMap es una excelente opción debido a su eficiencia en operaciones 
+de inserción y consulta.

@@ -1,0 +1,37 @@
+EJERCICIO 4 
+Escribe  un programa que  lea  un archivo de  texto, pasado como primer parámetro  en la línea de  comando, en una 
+List.  El  programa  debe  luego  imprimir  en  forma  aleatoria  líneas  del  archivo.  El  número  de  líneas  a  imprimir  será 
+especificado  como  segundo  parámetro.  Escribe  este  programa  de  forma  tal  que  asigne  una  colección  del  tamaño 
+correcto  desde  el  inicio,  y  no  una  que  vaya  expandiéndose  gradualmente  a  medida  que  el  archive    es  leído.    Para 
+calcular la cantidad de líneas del archive se puede usar la función java.io.File.length para obtener el tamaño 
+del archivo  y luego dividir por el tamaño considerado de una  línea promedio.... 
+
+
+import java.io.*;
+import java.util.*;
+
+public class RandomLines {
+    public static void main(String[] args) throws IOException {
+        if (args.length < 2) {
+            System.out.println("Usage: java RandomLines <filename> <number_of_lines>");
+            return;
+        }
+
+        String filename = args[0];
+        int numLines = Integer.parseInt(args[1]);
+
+        File file = new File(filename);
+        int totalLines = (int) (file.length() / 50); // Assuming average line length is 50
+        List<String> lines = new ArrayList<>(totalLines);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        }
+
+        Collections.shuffle(lines);
+        lines.stream().limit(numLines).forEach(System.out::println);
+    }
+}

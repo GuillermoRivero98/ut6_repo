@@ -1,0 +1,41 @@
+EJERCICIO 2 
+Investiga y diagrama cómo son las estructuras internas de un HashMap. Con lo investigado en el 
+ejercicio anterior, diagrama el estado de las estructuras luego de insertar las siguientes strings: 
+• Hola 
+• HolaMundo 
+• HashMap 
+• Colecciones 
+
+Buckets (Cubos):
+
+HashMap internamente utiliza un arreglo de buckets. Cada bucket es una lista enlazada (o un árbol rojo-negro si hay muchas colisiones).
+Cada entrada de la tabla hash contiene un par clave-valor.
+
+
+Proceso de Inserción:
+
+Se calcula el hash de la clave.
+El índice se determina usando index = hash % capacity.
+Se inserta la entrada en el bucket correspondiente.
+
+Sup que el HashMap tiene 16 Buckets
+Insertamos las cadenas dadas
+devuelve:
+
+Index   Bucket
+0       [ ]
+1       [ ]
+2       [ ]
+3       [ ]
+4       [ Hola -> Colecciones ]
+5       [ ]
+6       [ ]
+7       [ HashMap ]
+8       [ ]
+9       [ ]
+10      [ ]
+11      [ ]
+12      [ ]
+13      [ ]
+14      [ ]
+15      [ HolaMundo ]
